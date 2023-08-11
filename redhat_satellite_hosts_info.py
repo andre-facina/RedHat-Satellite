@@ -2,7 +2,7 @@
 # The information extract are:
 # Name,Operating System,Version,IP Address,Domain Name,Organization,Location,HostGroup Name,Content View,LifeCycle Environment,Registered Date
 # To use it you must create a token. To do this go to Satellite -> Administer -> choose the user -> Personal Access Tokens
-# The syntax to use the script is: python3 redhat_satellite_hosts_info.py --url https://host.example.redhat.com --username admin
+# The syntax to use the script is: python3 redhat_satellite_hosts_info.py --url https://host.example.redhat.com --username user
 # Then the script will ask to enter the token
 # Author: Andre Facina
 
