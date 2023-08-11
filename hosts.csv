@@ -1,0 +1,3 @@
+Name,Operating System,Version,IP Address,Domain Name,Organization,Location,HostGroup Name,Content View,LifeCycle Environment,Registered Date
+rhel79.example.redhat.com,RedHat 7.9,7.9,192.168.122.137,example.redhat.com,Red Hat,World,HostGroup_RHEL79,Default Organization View,Library,2023-07-21 19:37:23 UTC
+rhel87satellite612.example.redhat.com,RHEL 8.8,,192.168.122.12,example.redhat.com,Red Hat,World,,,,
