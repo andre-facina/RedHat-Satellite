@@ -18,11 +18,11 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def verify_api_status(username, token, url):
     url_status = url + '/api/status'
-    print(url_status)
+    #print(url_status)
     try:
         response = requests.get(url_status, auth=(username, token), verify=False)
         if response.status_code == 200:
-            # Authentication successful, you can process the response data here
+            # Authentication successful
             print("Authentication successful!")
             print("API Status:")
             print(response.json())
@@ -59,17 +59,14 @@ def get_hosts_information(username, token, url):
                 location = host["location_name"]
                 hostgroup = host["hostgroup_name"]
 
-                # Access the content_facet_attributes subgroup with a default value of None
                 content_view = host.get("content_facet_attributes", {}).get("content_view_name")
                 lifecycle_env = host.get("content_facet_attributes", {}).get("lifecycle_environment_name")
 
-                # Access the subscription_facet_attributes subgroup with a default value of None
                 registered_at = host.get("subscription_facet_attributes", {}).get("registered_at")
                 rh_version = host.get("subscription_facet_attributes", {}).get("release_version")
 
                 host_data.append((name, os_name, rh_version, ip, domain, org, location, hostgroup, content_view, lifecycle_env, registered_at ))
 
-            # Write the extracted data to a CSV file
             with open("hosts.csv", "w", newline="") as csvfile:
                 csv_writer = csv.writer(csvfile)
                 csv_writer.writerow(["Name", "Operating System", "Version", "IP Address", "Domain Name", "Organization", "Location", "HostGroup Name", "Content View", "LifeCycle Environment", "Registered Date" ])
@@ -95,4 +92,5 @@ if __name__ == '__main__':
 
     verify_api_status(args.username, token, args.url)
     get_hosts_information(args.username, token, args.url)
+
 
