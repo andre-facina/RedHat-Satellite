@@ -16,6 +16,7 @@ from getpass import getpass
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+# Function to verify the API Status
 def verify_api_status(username, token, url):
     url_status = url + '/api/status'
     #print(url_status)
@@ -34,6 +35,7 @@ def verify_api_status(username, token, url):
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
 
+# Function to extract the host information
 def get_hosts_information(username, token, url):
     url_hosts = url + '/api/v2/hosts'
     try:
@@ -49,6 +51,7 @@ def get_hosts_information(username, token, url):
 
             #host_data = [(host["name"], host["operatingsystem_name"], host["ip"], host["domain_name"], host["organization_name"], host["location_name"], host["hostgroup_name"], host["subscription_facet_attributes"].get("id") ) for host in results]
 
+# The following fields are in https://host/api/v2/hosts
             host_data = []
             for host in results:
                 name = host["name"]
@@ -59,14 +62,17 @@ def get_hosts_information(username, token, url):
                 location = host["location_name"]
                 hostgroup = host["hostgroup_name"]
 
+                # Content_facet_attributes
                 content_view = host.get("content_facet_attributes", {}).get("content_view_name")
                 lifecycle_env = host.get("content_facet_attributes", {}).get("lifecycle_environment_name")
 
+                # Subscription_facet_attributes
                 registered_at = host.get("subscription_facet_attributes", {}).get("registered_at")
                 rh_version = host.get("subscription_facet_attributes", {}).get("release_version")
 
                 host_data.append((name, os_name, rh_version, ip, domain, org, location, hostgroup, content_view, lifecycle_env, registered_at ))
 
+            # Write to hosts.csv
             with open("hosts.csv", "w", newline="") as csvfile:
                 csv_writer = csv.writer(csvfile)
                 csv_writer.writerow(["Name", "Operating System", "Version", "IP Address", "Domain Name", "Organization", "Location", "HostGroup Name", "Content View", "LifeCycle Environment", "Registered Date" ])
@@ -92,5 +98,6 @@ if __name__ == '__main__':
 
     verify_api_status(args.username, token, args.url)
     get_hosts_information(args.username, token, args.url)
+
 
 
