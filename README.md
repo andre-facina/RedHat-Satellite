@@ -1,7 +1,7 @@
 # RedHat-Satellite Python Scripts
 
 
-##### Hosts Info
+#### Hosts Info
 
 The script **redhat_satellite_hosts_info.py**  establishes a connection with Red Hat Satellite, extracts host information, and generates a CSV file named **hosts.csv**. The script has been tested successfully on Red Hat Satellite version 6.12.
 
@@ -26,7 +26,7 @@ Script Usage Syntax:
 
 
 
-# Content View Info
+#### Content View Info
 
 The script **redhat_satellite_content_view_info.py**  establishes a connection with  Red Hat Satellite API to retrieve information about content views. Subsequently, it compiles this data and exports it to an Excel spreadsheet. Each sheet within the workbook corresponds to a specific content view, showcasing details such as content view version, latest update, activation key status, and repository listings. The name of the Excel file created will be **content_views_[Organization].xlsx**.
 
@@ -38,7 +38,7 @@ Script Usage Syntax:
 
 
 
-# Errata Info
+#### Errata Info
 
 The script **redhat_satellite_errata.py** extracts all RHSA, RHBA, and RHEA errata from Red Hat Satellite and saves them to a file named "errata.csv." It has been tested on Satellite 6.12. 
 
@@ -57,7 +57,7 @@ Script Usage Syntax:
 
 
 
-
+#### Extra Info
 
 To utilize the scripts, it's necessary to create an authentication token. You can achieve this by following these steps:
 
