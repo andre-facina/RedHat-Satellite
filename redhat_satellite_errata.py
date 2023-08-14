@@ -88,3 +88,4 @@ if __name__ == '__main__':
 
     write_to_csv(errata_data_list, "errata.csv")
 
+
