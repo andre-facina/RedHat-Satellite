@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# This script register a host to the satellite. Tested in satellite version 6.14
+# This script registers a host to the satellite. Tested in satellite version 6.14
 import argparse
 import subprocess
 
